@@ -57,7 +57,9 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
-  image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.src = `${DBHelper.imageUrlForRestaurant(restaurant, true)}`;
+  image.setAttribute('srcset', `${image.src} 2x, ${DBHelper.imageUrlForRestaurant(restaurant)} 1x`);
+  image.setAttribute('alt', `${restaurant.name} Restaurant`);
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
@@ -79,10 +81,13 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
     const row = document.createElement('tr');
 
     const day = document.createElement('td');
+    day.classList.add('day-cell');
+
     day.innerHTML = key;
     row.appendChild(day);
 
     const time = document.createElement('td');
+    time.classList.add('hour-cell');
     time.innerHTML = operatingHours[key];
     row.appendChild(time);
 
@@ -117,21 +122,32 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review) => {
   const li = document.createElement('li');
+  const headerDiv = document.createElement('div');
+  headerDiv.classList.add('review-header');
+  const contentDiv = document.createElement('div');
+  contentDiv.classList.add('review-content');
+
   const name = document.createElement('p');
+  name.classList.add('review-name');
   name.innerHTML = review.name;
-  li.appendChild(name);
+  headerDiv.appendChild(name);
 
   const date = document.createElement('p');
+  date.classList.add('review-date');
   date.innerHTML = review.date;
-  li.appendChild(date);
+  headerDiv.appendChild(date);
+  li.appendChild(headerDiv);
 
   const rating = document.createElement('p');
+  rating.classList.add('review-rating');
   rating.innerHTML = `Rating: ${review.rating}`;
-  li.appendChild(rating);
+  contentDiv.appendChild(rating);
 
   const comments = document.createElement('p');
+  comments.classList.add('text-muted');
   comments.innerHTML = review.comments;
-  li.appendChild(comments);
+  contentDiv.appendChild(comments);
+  li.appendChild(contentDiv);
 
   return li;
 }
