@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 registerServiceWorker = () => {
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').then((reg) => {
+            navigator.serviceWorker.register('sw.js', {scope: './'}).then((reg) => {
                 console.log('Service worker registration successful with scope: ', reg.scope);
                 if (reg.installing) {
                     console.log('Service worker installing');
