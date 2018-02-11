@@ -10,7 +10,7 @@ self.addEventListener('install', function(event) {
                 '/js/main.js',
                 '/js/restaurant_info.js',
                 '/css/styles.css',
-                '/data/restaurants.json',
+                '/data/restaurants.json'
             ]);
         })
     );
