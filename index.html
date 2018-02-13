@@ -8,12 +8,12 @@
     <title>Restaurant Reviews</title>
 </head>
 
-<body>
+<body role="application">
     <header>
-        <nav>
+        <nav role="banner">
             <h1><a href="./">Restaurant Reviews</a></h1>
         </nav>
-        <div class="filter-options">
+        <div class="filter-options" role="menubar">
             <h2>Filter Results</h2>
             <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
                 <option value="all">All Neighborhoods</option>
@@ -23,13 +23,13 @@
             </select>
         </div>
     </header>
-    <main id="maincontent">
-        <section id="map-container">
-            <div id="map"></div>
-        </section>
+    <main id="restaurantList">
+        <ul id="restaurants-list" role="listbox"></ul>
     </main>
-    <section id="restaurantList">
-        <ul id="restaurants-list"></ul>
+    <section id="maincontent">
+        <div id="map-container">
+            <div id="map"></div>
+        </div>
     </section>
     <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
     <script type="application/javascript" charset="utf-8" src="js/main.js"></script>

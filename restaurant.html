@@ -10,11 +10,11 @@
     <title>Restaurant Info</title>
 </head>
 
-<body class="restaurant">
+<body class="restaurant" role="application">
     <!-- Beginning header -->
     <header>
         <!-- Beginning nav -->
-        <nav>
+        <nav role="banner">
             <h1><a href="./">Restaurant Reviews</a></h1>
         </nav>
         <!-- Beginning breadcrumb -->
@@ -26,14 +26,14 @@
     </header>
     <!-- End header -->
     <!-- Beginning main -->
-    <main id="maincontent">
+    <section id="maincontent">
         <!-- Beginning map -->
-        <section id="map-container">
+        <div id="map-container">
             <div id="map"></div>
-        </section>
+        </div>
         <!-- End map -->
-    </main>
-    <div class="restaurant-wrapper">
+    </section>
+    <main class="restaurant-wrapper">
         <!-- Beginning restaurant -->
         <section id="restaurant-container">
             <h1 id="restaurant-name"></h1>
@@ -48,7 +48,7 @@
             <ul id="reviews-list"></ul>
         </section>
         <!-- End reviews -->
-    </div>
+    </main>
     <!-- End main -->
     <!-- Beginning footer -->
     <footer id="footer">
