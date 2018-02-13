@@ -13,11 +13,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     fetchCuisines();
 });
 
-
+/**
+ * Register a service worker to manage app caching.
+ */
 registerServiceWorker = () => {
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js').then((reg) => {
-                console.log('ServiceWorker registration successful with scope: ', reg.scope);
+                console.log('Service worker registration successful with scope: ', reg.scope);
                 if (reg.installing) {
                     console.log('Service worker installing');
                 } else if (reg.waiting) {
@@ -158,6 +160,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  */
 createRestaurantHTML = (restaurant) => {
     const li = document.createElement('li');
+    li.setAttribute('role', 'option');
 
     const image = document.createElement('img');
     image.className = 'restaurant-img';
