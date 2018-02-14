@@ -94,7 +94,7 @@ header {
 
 header::after {
     height: 100vh;
-    width: 428px;
+    width: 100%;
     position: absolute;
     top: 0;
     z-index: -1;
@@ -327,7 +327,6 @@ nav h1 a {
     border: 2px solid #ccc;
     font-family: Arial, sans-serif;
     margin: 15px;
-    min-height: 360px;
     padding: 15px 45px;
     text-align: left;
 }
@@ -339,7 +338,7 @@ nav h1 a {
     max-width: 100%;
 }
 
-#restaurants-list li h1 {
+#restaurants-list li h2 {
     color: #f18200;
     font-family: Arial, sans-serif;
     font-size: 14pt;
@@ -435,9 +434,9 @@ nav h1 a {
     padding: 30px 40px 80px;
 }
 
-#reviews-container h2 {
+#reviews-container h3 {
     color: #f58500;
-    font-size: 24pt;
+    font-size: 20pt;
     font-weight: 300;
     letter-spacing: -1px;
     padding-bottom: 1pt;
@@ -461,6 +460,62 @@ nav h1 a {
 #restaurant-hours td,
 .text-muted {
     color: #666;
+}
+
+@media (min-width: 1400px) {
+    body {
+        -ms-grid-columns: 680px (1fr)[5];
+        grid-template-columns: 680px repeat(5, 1fr);
+    }
+
+    #restaurants-list li {
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: (1fr)[5];
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-areas: "ri ri rn rn rn" "ri ri rc rc rc" "ri ri ra ra ra" "ri ri rl rl rl";
+    }
+
+    .restaurant-img {
+        -ms-grid-row: 1;
+        -ms-grid-row-span: 4;
+        -ms-grid-column: 1;
+        -ms-grid-column-span: 2;
+        grid-area: ri;
+    }
+
+    #restaurants-list li .restaurant-name {
+        -ms-grid-row: 1;
+        -ms-grid-column: 3;
+        -ms-grid-column-span: 3;
+        grid-area: rn;
+        margin-left: 15px;
+    }
+
+    #restaurants-list li .restaurant-neighborhood {
+        -ms-grid-row: 2;
+        -ms-grid-column: 3;
+        -ms-grid-column-span: 3;
+        grid-area: rc;
+        margin-left: 15px;
+    }
+
+    #restaurants-list li .restaurant-address {
+        -ms-grid-row: 3;
+        -ms-grid-column: 3;
+        -ms-grid-column-span: 3;
+        grid-area: ra;
+        margin-left: 15px;
+
+    }
+
+    #restaurants-list li .restaurant-link {
+        -ms-grid-row: 4;
+        -ms-grid-column: 3;
+        -ms-grid-column-span: 3;
+        grid-area: rl;
+    }
+
 }
 
 @media (max-width: 680px) {
@@ -526,7 +581,7 @@ nav h1 a {
     }
 
     #restaurant-name,
-    #reviews-container h2 {
+    #reviews-container h3 {
         font-size: 14pt;
     }
 
